@@ -21,7 +21,7 @@ namespace DatabaseFrontEnd
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             List<string>[] output = db.Select();
 

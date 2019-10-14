@@ -28,6 +28,10 @@ namespace DatabaseFrontEnd
             Console.WriteLine("Connection made with string: " + connectionString);
 
             connection = new MySqlConnection(connectionString);
+
+            Console.WriteLine("Test Connection");
+            if (OpenConnection())
+                CloseConnection();
         }
 
         //open connection to database
@@ -60,7 +64,6 @@ namespace DatabaseFrontEnd
         //Close connection
         private bool CloseConnection()
         {
-            
             try
             {
                 connection.Close();
