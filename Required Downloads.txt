@@ -1,0 +1,2 @@
+MySQL Connector - Required for DBConnection Class
+https://dev.mysql.com/downloads/connector/net/
