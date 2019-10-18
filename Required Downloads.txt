@@ -1,2 +1,2 @@
-MySQL Connector - Required for DBConnection Class
+MySQL Connector - Required for DBConnection Class - 8.0.18.0
 https://dev.mysql.com/downloads/connector/net/

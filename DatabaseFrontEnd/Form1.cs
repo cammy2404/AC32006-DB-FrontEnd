@@ -14,6 +14,8 @@ namespace DatabaseFrontEnd
     {
         DBConnection db;
 
+        string[] PeopleSelect = { "ID", "Surname", "Age" };
+
         public Form1()
         {
             InitializeComponent();
@@ -23,15 +25,52 @@ namespace DatabaseFrontEnd
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            List<string>[] output = db.Select();
+            //List<string>[] output = db.Select(tb_table_name.Text, PeopleSelect);
+            //PrintData(output);
 
-            for (int i = 0; i < output.Length; i++)
+            //List<string>[] output1 = db.Select("Select Name, ID From People");
+            //PrintData(output1);
+
+            List<string>[] output2 = db.Select(db.SelectQueryBuilder("People", PeopleSelect, "1=1", "ID", false));
+            PrintData(output2);
+            
+            //tb_output.Text += db.SelectQueryBuilder("People", PeopleSelect);
+            //tb_output.Text += Environment.NewLine;
+            //tb_output.Text += Environment.NewLine;
+
+            //tb_output.Text +=db.SelectQueryBuilder("People", PeopleSelect, "name='cammy'");
+            //tb_output.Text += Environment.NewLine;
+            //tb_output.Text += Environment.NewLine;
+
+            //tb_output.Text +=db.SelectQueryBuilder("People", PeopleSelect, "name='cammy'", PeopleSelect[1]);
+            //tb_output.Text += Environment.NewLine;
+            //tb_output.Text += Environment.NewLine;
+
+            //tb_output.Text +=db.SelectQueryBuilder("People", PeopleSelect, "name='cammy'", PeopleSelect[1], true);
+            //tb_output.Text += Environment.NewLine;
+            //tb_output.Text += Environment.NewLine;
+
+            //tb_output.Text += db.SelectQueryBuilder("People", PeopleSelect, "name='cammy'", PeopleSelect[1], false);
+
+        }
+
+        private void PrintData(List<string>[] output)
+        {
+            if (output != null)
             {
-                foreach (string j in output[i])
+
+                for (int i = 0; i < output[0].Count; i++)
                 {
-                    tb_output.Text += j;
+                    for (int j = 0; j < output.Length; j++)
+                    {
+                        tb_output.Text += output[j][i];
+                    }
+                    tb_output.Text += Environment.NewLine;
                 }
-                tb_output.Text += Environment.NewLine;
+            }
+            else
+            {
+                tb_output.Text = "Error connecting to the database " + Environment.NewLine + "    - table name might contain ilegal characters";
             }
         }
         
